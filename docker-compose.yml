@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     build: .
-    command: bash -c "uvicorn main:app --host 127.0.0.1 --port 5000 --reload"
+    command: python app/main.py run -h 0.0.0.0
     volumes:
       - .:/code
     ports:
