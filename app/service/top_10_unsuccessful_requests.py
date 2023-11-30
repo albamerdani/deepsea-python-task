@@ -3,9 +3,12 @@ from collections import Counter
 
 
 def top_10_unsuccessful() ->dict:
-    status_codes = LogFile.extract_status_codes()
+    log_file = LogFile()
+    log_data = log_file.read_log_file()
+    status_codes = log_file.extract_status_codes()
 
-    paths = LogFile.extract_paths()
+    for host_entry in log_data:
+        paths = log_file.extract_paths(host_entry)
 
     # Filter out successful requests (status codes starting with 2 or 3)
     unsuccessful_requests = [path for code, path in zip(status_codes, paths) if not code.startswith(('2', '3'))]

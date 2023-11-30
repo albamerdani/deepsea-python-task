@@ -7,7 +7,7 @@ Python file with methods to read the log file and extract hosts, pages, paths of
 
 class LogFile:
 
-    log_file_path = 'D:\\Merdani_ITServices\\DeepSea\\deepsea-python-task\\app\\http_log_file\\new_final_final_01.log'
+    log_file_path = 'D:\\Merdani_ITServices\\DeepSea\\new_final_final_01.log'
 
     def read_log_file(self):
         try:

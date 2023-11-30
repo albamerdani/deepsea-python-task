@@ -3,7 +3,9 @@ from service.read_log_file import LogFile
 
 
 def top_10_hosts():
-    hosts = LogFile.extract_hosts()
+    log_file = LogFile()
+
+    hosts = log_file.extract_hosts()
 
     # Count the occurrences of each host
     host_counts = Counter(hosts)

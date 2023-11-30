@@ -1,50 +1,49 @@
 from service import top_10_hosts, top_10_hosts_top_5_pages, top_10_pages, top_10_unsuccessful_requests, successful_requests_percentage, unsuccessful_requests_percentage
 import logging
-from flask import APIRouter, jsonify
-
-router = APIRouter()
-
-log = logging.getLogger("DeepSea Technologies Test Logs")
+from flask import Flask, jsonify
 
 
-@router.get('/top10Pages')
-def top_10_hosts_detailed():
-    result = top_10_pages.top_10_pages()
+# Function that create the app
+def create_app():
+    # create and configure the app
+    app = Flask(__name__)
 
-    return jsonify(result)
+    log = logging.getLogger("DeepSea Technologies Test Logs")
 
+    @app.route('/top10Pages')
+    def top_10_page():
+        result = top_10_pages.top_10_pages()
 
-@router.get('/successPercentage')
-def top_10_hosts_detailed():
-    result = successful_requests_percentage.success_percentage()
+        return jsonify(result)
 
-    return jsonify(result)
+    @app.route('/successPercentage')
+    def success_percentage():
+        result = successful_requests_percentage.success_percentage()
 
+        return jsonify(result)
 
-@router.get('/unsuccessfulPercentage')
-def top_10_hosts_detailed():
-    result = unsuccessful_requests_percentage.unsuccessful_percentage()
+    @app.route('/unsuccessfulPercentage')
+    def unsuccessful_percentage():
+        result = unsuccessful_requests_percentage.unsuccessful_percentage()
 
-    return jsonify(result)
+        return jsonify(result)
 
+    @app.route('/top10Unsuccessful')
+    def top_10_unsuccessful_request():
+        result = top_10_unsuccessful_requests.top_10_unsuccessful()
 
-@router.get('/top10UnsuccessfulRequests')
-def top_10_hosts_detailed():
-    result = top_10_unsuccessful_requests.top_10_unsuccessful()
+        return jsonify(result)
 
-    return jsonify(result)
+    @app.route('/top10Hosts')
+    def top_10_host():
 
+        result = top_10_hosts.top_10_hosts()
+        return jsonify(result)
 
-@router.get('/top10Hosts')
-def top_10_hosts():
+    @app.route('/top10HostsDetailed')
+    def top_10_hosts_detailed():
+        detailed_result = top_10_hosts_top_5_pages.top_10_hosts_detailed()
 
-    result = top_10_hosts.top_10_hosts()
-    return jsonify(result)
+        return jsonify(detailed_result)
 
-
-@router.get('/top10HostsDetailed')
-def top_10_hosts_detailed():
-    detailed_result = top_10_hosts_top_5_pages.top_10_hosts_detailed()
-
-    return jsonify(detailed_result)
-
+    return app

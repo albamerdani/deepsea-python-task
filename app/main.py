@@ -1,11 +1,6 @@
-from flask import Flask
-from app.controller.controller import router
+from controller import reports
 
-deepsea_app = Flask()
-
-deepsea_app.include_router(router)
-
+deepsea_app = reports.create_app()
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(deepsea_app, host="localhost", port=5000)
+    deepsea_app.run(debug=True, port=5000)

@@ -3,7 +3,9 @@ from service.read_log_file import LogFile
 
 
 def top_10_pages() ->dict:
-    pages = LogFile.extract_pages()
+    log_file = LogFile()
+
+    pages = log_file.extract_pages()
 
     # Count the occurrences of each page
     page_counts = Counter(pages)

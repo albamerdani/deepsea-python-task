@@ -3,7 +3,9 @@ from service.read_log_file import LogFile
 
 
 def top_10_hosts_detailed():
-    hosts = LogFile.extract_hosts()
+    log_file = LogFile()
+
+    hosts = log_file.extract_hosts()
 
     # Count the occurrences of each host
     host_counts = Counter(hosts)
@@ -13,14 +15,14 @@ def top_10_hosts_detailed():
 
     # Create a dictionary for the detailed JSON response
     detailed_result = {}
-    log_data = LogFile.read_log_file()
+    log_data = log_file.read_log_file()
 
     for host, count in top_10_hosts:
         # Filter log entries for the current host
         host_entries = [line for line in log_data if host in line]
 
         # Extract paths requested by the current host
-        paths = LogFile.extract_paths(host_entries)
+        paths = log_file.extract_paths(host_entries)
 
         # Count the occurrences of each path
         path_counts = Counter(paths)
