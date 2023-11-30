@@ -9,7 +9,8 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN pip install -r /requirements.txt
+RUN pip3 install -r /requirements.txt
 
 EXPOSE 5000
-CMD ["python", "app/main.py"]
+ENTRYPOINT ["python3"]
+CMD ["app/main.py"]
