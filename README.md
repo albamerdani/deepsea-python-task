@@ -14,17 +14,20 @@ unittests package - contains test_main.py file with some simple unit tests for t
 ### Run the app
 To run the application for the reports please run the main.py python file under the repository folder.
 
-Run the below commands in your terminal
-
 First install Python3 and Flask in your environment.
 
 `pip3 install flask ` or `pip install flask`
 
-To run the application locally:
-
 In terminal go to the path of deepsea-python-task repository.
 
 Go with `cd /path/to/repo/directory`
+
+Then install python libraries and packages required for this task under requirements.txt file
+
+`pip3 install -r requirements.txt
+`
+
+To run the application locally:
 
 Windows
 
@@ -36,7 +39,7 @@ Linux
 `python3 app/main.py `
 
 
-Open your browser and put the below paths to access json report
+Open your browser and put the below paths to access json reports
 
 http://127.0.0.1:5000/top10Pages
 
