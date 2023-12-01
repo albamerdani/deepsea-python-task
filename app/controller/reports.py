@@ -1,4 +1,4 @@
-from service import top_10_hosts, top_10_hosts_top_5_pages, top_10_pages, top_10_unsuccessful_requests, successful_requests_percentage, unsuccessful_requests_percentage
+from app.service import top_10_hosts, top_10_hosts_top_5_pages, top_10_pages, top_10_unsuccessful_requests, successful_requests_percentage, unsuccessful_requests_percentage
 import logging
 from flask import Flask, jsonify
 

@@ -1,7 +1,17 @@
-from service.read_log_file import LogFile
+from app.service.read_log_file import LogFile
 
 
-def success_percentage()-> dict:
+def success_percentage() -> dict:
+    """
+        Generate a report with percentage number of successful requests based on the status code of requests.
+
+        Returns:
+        dict: A dictionary containing detailed information.
+        Example:
+        {
+          "success_percentage": 99.35263082664162
+        }
+    """
     log_file = LogFile()
     # Extract status codes using a regular expression
     # Assuming the format is "HTTP/1.0" followed by a space and a 3-digit status code

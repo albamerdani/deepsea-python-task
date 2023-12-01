@@ -2,3 +2,4 @@ flask
 uvicorn
 pytest
 re
+python-dotenv

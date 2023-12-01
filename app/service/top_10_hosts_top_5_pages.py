@@ -1,8 +1,72 @@
 from collections import Counter
-from service.read_log_file import LogFile
+from app.service.read_log_file import LogFile
 
 
-def top_10_hosts_detailed():
+def top_10_hosts_detailed() -> dict:
+    """
+       Generate a detailed report of the top 10 hosts based on the number of requests.
+
+       Returns:
+       dict: A dictionary containing lists with detailed information about the top 10 hosts.
+             Each entry includes the host's IP address or domain and the corresponding
+             number of requests made for top 5 pages including the page name.
+
+       Example:
+       {
+          "163.206.89.4": {
+            "count": 4791,
+            "host": "163.206.89.4",
+            "top5_paths": [
+              {
+                "count": 568,
+                "path": "/images/NASA-logosmall.gif"
+              },
+              {
+                "count": 360,
+                "path": "/htbin/cdt_main.pl"
+              },
+              {
+                "count": 347,
+                "path": "/shuttle/countdown/images/countclock.gif"
+              },
+              {
+                "count": 251,
+                "path": "/ksc.html"
+              },
+              {
+                "count": 237,
+                "path": "/images/USA-logosmall.gif"
+              }
+            ]
+          },
+          "edams.ksc.nasa.gov": {
+            "count": 6530,
+            "host": "edams.ksc.nasa.gov",
+            "top5_paths": [
+              {
+                "count": 1020,
+                "path": "/ksc.html"
+              },
+              {
+                "count": 870,
+                "path": "/images/WORLD-logosmall.gif"
+              },
+              {
+                "count": 869,
+                "path": "/images/NASA-logosmall.gif"
+              },
+              {
+                "count": 867,
+                "path": "/images/MOSAIC-logosmall.gif"
+              },
+              {
+                "count": 867,
+                "path": "/images/USA-logosmall.gif"
+              }
+            ]
+          }
+        }
+    """
     log_file = LogFile()
 
     hosts = log_file.extract_hosts()

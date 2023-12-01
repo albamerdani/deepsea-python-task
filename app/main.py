@@ -1,4 +1,4 @@
-from controller import reports
+from app.controller import reports
 
 deepsea_app = reports.create_app()
 
