@@ -9,8 +9,11 @@ service package - contains python files and classes with methods to read the log
 
 unittests package - contains test_main.py file with some simple unit tests for the methods.
 
-.env file is added on purpose in repo. Please update the path of logfile there depending on the path that file is located in your OS
+.env file is added on purpose. Please update the path of logfile there depending on the path that file is located in your OS
+in this format below:
 
+`FILE_PATH=path/to/your/log/file
+`
 ### Run the app
 To run the application for the reports please run the main.py python file under the repository folder.
 
